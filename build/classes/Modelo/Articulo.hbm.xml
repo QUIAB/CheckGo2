@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-dic-2020 16:35:14 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="Modelo.Articulo" table="articulo" catalog="bdcheckgo">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tipoArticulo" class="Modelo.TipoArticulo" fetch="select">
+            <column name="TIPO_ARTICULO_ID" not-null="true" />
+        </many-to-one>
+        <property name="codigo" type="string">
+            <column name="CODIGO" length="45" not-null="true" />
+        </property>
+        <set name="articuloTieneSolicituds" table="articulo_tiene_solicitud" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ARTICULO_ID" not-null="true" />
+            </key>
+            <one-to-many class="Modelo.ArticuloTieneSolicitud" />
+        </set>
+    </class>
+</hibernate-mapping>

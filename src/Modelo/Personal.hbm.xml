@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-dic-2020 16:35:14 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="Modelo.Personal" table="personal" catalog="bdcheckgo">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="estadoPersonal" class="Modelo.EstadoPersonal" fetch="select">
+            <column name="ESTADO_PERONAL_ID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="persona" class="Modelo.Persona" fetch="select">
+            <column name="PERSONA_ID" not-null="true" />
+        </many-to-one>
+        <property name="contrasena" type="string">
+            <column name="CONTRASENA" length="45" not-null="true" />
+        </property>
+        <set name="entregas" table="entrega" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PERSONAL_PERSONA_ID" not-null="true" />
+            </key>
+            <one-to-many class="Modelo.Entrega" />
+        </set>
+    </class>
+</hibernate-mapping>

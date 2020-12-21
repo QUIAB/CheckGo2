@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-dic-2020 16:35:14 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="Modelo.Solicitud" table="solicitud" catalog="bdcheckgo">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cliente" class="Modelo.Cliente" fetch="select">
+            <column name="CLIENTE_ID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="area" class="Modelo.Area" fetch="select">
+            <column name="AREA_ID" not-null="true" />
+        </many-to-one>
+        <property name="aceptada" type="byte">
+            <column name="ACEPTADA" not-null="true" />
+        </property>
+        <set name="articuloTieneSolicituds" table="articulo_tiene_solicitud" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SOLICITUD_ID" not-null="true" />
+            </key>
+            <one-to-many class="Modelo.ArticuloTieneSolicitud" />
+        </set>
+        <set name="prestamos" table="prestamo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SOLICITUD_ID" not-null="true" />
+            </key>
+            <one-to-many class="Modelo.Prestamo" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-dic-2020 16:35:14 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="Modelo.Prestamo" table="prestamo" catalog="bdcheckgo">
+        <composite-id name="id" class="Modelo.PrestamoId">
+            <key-property name="id" type="int">
+                <column name="ID" />
+            </key-property>
+            <key-property name="solicitudClientePersonaId" type="int">
+                <column name="SOLICITUD_CLIENTE_PERSONA_ID" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="solicitud" class="Modelo.Solicitud" fetch="select">
+            <column name="SOLICITUD_ID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="entrega" class="Modelo.Entrega" fetch="select">
+            <column name="ENTREGA_ID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="devolucion" class="Modelo.Devolucion" fetch="select">
+            <column name="DEVOLUCION_ID" not-null="true" />
+        </many-to-one>
+        <property name="observaciones" type="string">
+            <column name="OBSERVACIONES" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="FECHA" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

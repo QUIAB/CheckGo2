@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bdcheckgo</property>
+    <property name="hibernate.connection.username">usuario</property>
+    <property name="hibernate.connection.password">base1020</property>
+    <mapping resource="Modelo/TipoArticulo.hbm.xml"/>
+    <mapping resource="Modelo/Entrega.hbm.xml"/>
+    <mapping resource="Modelo/Devolucion.hbm.xml"/>
+    <mapping resource="Modelo/Persona.hbm.xml"/>
+    <mapping resource="Modelo/Articulo.hbm.xml"/>
+    <mapping resource="Modelo/ArticuloTieneSolicitud.hbm.xml"/>
+    <mapping resource="Modelo/EstadoPersonal.hbm.xml"/>
+    <mapping resource="Modelo/Solicitud.hbm.xml"/>
+    <mapping resource="Modelo/Personal.hbm.xml"/>
+    <mapping resource="Modelo/Prestamo.hbm.xml"/>
+    <mapping resource="Modelo/Area.hbm.xml"/>
+    <mapping resource="Modelo/TipoArea.hbm.xml"/>
+    <mapping resource="Modelo/Edificio.hbm.xml"/>
+    <mapping resource="Modelo/Cliente.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>
